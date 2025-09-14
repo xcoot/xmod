@@ -1,0 +1,25 @@
+.class Lcom/android/server/policy/PhoneWindowManagerExt$Injector;
+.super Ljava/lang/Object;
+.source "qb/98832498 6c6e4010375fc1772bdd4e8a88b0896735443618f27021583382e8158243fc30"
+
+
+# instance fields
+.field public final mPhoneWindowManager:Lcom/android/server/policy/PhoneWindowManager;
+
+
+# direct methods
+.method public constructor <init>(Lcom/android/server/policy/PhoneWindowManager;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 2
+    .line 3
+    .line 4
+    iput-object p1, p0, Lcom/android/server/policy/PhoneWindowManagerExt$Injector;->mPhoneWindowManager:Lcom/android/server/policy/PhoneWindowManager;
+
+    .line 5
+    .line 6
+    return-void
+.end method

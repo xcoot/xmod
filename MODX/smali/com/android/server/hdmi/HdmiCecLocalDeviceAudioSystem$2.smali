@@ -1,0 +1,130 @@
+.class public final Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$2;
+.super Ljava/lang/Object;
+.source "qb/98832498 6c6e4010375fc1772bdd4e8a88b0896735443618f27021583382e8158243fc30"
+
+# interfaces
+.implements Lcom/android/server/hdmi/HdmiControlService$SendMessageCallback;
+.implements Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$TvSystemAudioModeSupportedCallback;
+
+
+# instance fields
+.field public final synthetic this$0:Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem;
+
+.field public final synthetic val$callback:Ljava/lang/Object;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem;Ljava/lang/Object;)V
+    .locals 0
+
+    .line 1
+    iput-object p1, p0, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$2;->this$0:Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem;
+
+    .line 3
+    iput-object p2, p0, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$2;->val$callback:Ljava/lang/Object;
+
+    .line 5
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    .line 8
+    return-void
+.end method
+
+
+# virtual methods
+.method public onResult(Z)V
+    .locals 3
+
+    .line 1
+    iget-object v0, p0, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$2;->this$0:Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem;
+
+    .line 3
+    if-eqz p1, :cond_0
+
+    .line 5
+    const/4 p0, 0x1
+
+    .line 6
+    invoke-virtual {v0, p0}, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem;->setSystemAudioMode(Z)V
+
+    .line 9
+    invoke-virtual {v0}, Lcom/android/server/hdmi/HdmiCecLocalDevice;->getDeviceInfo()Landroid/hardware/hdmi/HdmiDeviceInfo;
+
+    .line 12
+    move-result-object p1
+
+    .line 13
+    invoke-virtual {p1}, Landroid/hardware/hdmi/HdmiDeviceInfo;->getLogicalAddress()I
+
+    .line 16
+    move-result p1
+
+    .line 17
+    const/16 v1, 0x72
+
+    .line 19
+    const/16 v2, 0xf
+
+    .line 21
+    invoke-static {p1, v2, v1, p0}, Lcom/android/server/hdmi/HdmiCecMessageBuilder;->buildCommandWithBooleanParam(IIIZ)Lcom/android/server/hdmi/HdmiCecMessage;
+
+    .line 24
+    move-result-object p0
+
+    .line 25
+    const/4 p1, 0x0
+
+    .line 26
+    iget-object v0, v0, Lcom/android/server/hdmi/HdmiLocalDevice;->mService:Lcom/android/server/hdmi/HdmiControlService;
+
+    .line 28
+    invoke-virtual {v0, p0, p1}, Lcom/android/server/hdmi/HdmiControlService;->sendCecCommand(Lcom/android/server/hdmi/HdmiCecMessage;Lcom/android/server/hdmi/HdmiControlService$SendMessageCallback;)V
+
+    .line 31
+    goto :goto_0
+
+    .line 32
+    :cond_0
+    iget-object p1, v0, Lcom/android/server/hdmi/HdmiLocalDevice;->mService:Lcom/android/server/hdmi/HdmiControlService;
+
+    .line 34
+    invoke-virtual {p1}, Lcom/android/server/hdmi/HdmiControlService;->assertRunOnServiceThread()V
+
+    .line 37
+    iget-object p1, p1, Lcom/android/server/hdmi/HdmiControlService;->mCecController:Lcom/android/server/hdmi/HdmiCecController;
+
+    .line 39
+    iget-object p0, p0, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$2;->val$callback:Ljava/lang/Object;
+
+    .line 41
+    check-cast p0, Lcom/android/server/hdmi/HdmiCecMessage;
+
+    .line 43
+    const/4 v0, 0x4
+
+    .line 44
+    invoke-virtual {p1, v0, p0}, Lcom/android/server/hdmi/HdmiCecController;->maySendFeatureAbortCommand(ILcom/android/server/hdmi/HdmiCecMessage;)V
+
+    .line 47
+    :goto_0
+    return-void
+.end method
+
+.method public onSendCompleted(I)V
+    .locals 0
+
+    .line 1
+    iget-object p1, p0, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$2;->this$0:Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem;
+
+    .line 3
+    iget-object p0, p0, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem$2;->val$callback:Ljava/lang/Object;
+
+    .line 5
+    check-cast p0, Lcom/android/server/hdmi/HdmiCecLocalDevice$StandbyCompletedCallback;
+
+    .line 7
+    invoke-virtual {p1, p0}, Lcom/android/server/hdmi/HdmiCecLocalDeviceAudioSystem;->invokeStandbyCompletedCallback(Lcom/android/server/hdmi/HdmiCecLocalDevice$StandbyCompletedCallback;)V
+
+    .line 10
+    return-void
+.end method
